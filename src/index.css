@@ -1,5 +1,91 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
+@theme {
+  /* Core Palette - Light Glass (Inspired by idea.html) */
+  --color-background: #f8fafc;
+  --color-surface: rgba(255, 255, 255, 0.4);
+  --color-border: rgba(200, 200, 255, 0.2);
+  
+  --color-accent: #6366f1;       /* Indigo primary */
+  --color-accent2: #8b5cf6;      /* Violet secondary */
+  --color-neon: #38bdf8;        /* Sky blue accent */
+  --color-neon2: #f472b6;       /* Pink accent */
+  --color-neon3: #c084fc;       /* Purple highlight */
+  
+  --color-text: #0f172a;        /* Deep slate */
+  --color-text2: #475569;       /* Medium slate */
+  --color-text3: #94a3b8;       /* Light slate */
+  
+  --color-glow: rgba(99, 102, 241, 0.15);
+  
+  /* System */
+  --radius-r: 1.5rem;
+  --radius-r2: 2.5rem;
+  --font-sans: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
+  
+  @keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+}
 
+@layer base {
+  body {
+    @apply bg-background text-text overflow-x-hidden antialiased;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02";
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.05) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(192, 132, 252, 0.05) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, rgba(56, 189, 248, 0.05) 0px, transparent 50%),
+      radial-gradient(at 0% 100%, rgba(244, 114, 182, 0.05) 0px, transparent 50%);
+  }
+}
+
+@layer components {
+  .nav-blur {
+    @apply fixed top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-7xl z-50 
+           px-8 py-4 bg-white/40 backdrop-blur-2xl border border-white/20 
+           rounded-2xl flex items-center justify-between shadow-2xl;
+  }
+
+  .glass-panel {
+    @apply bg-surface backdrop-blur-xl border border-border rounded-r2;
+  }
+
+  .recipe-card {
+    @apply p-6 transition-all duration-500 hover:-translate-y-2 
+           hover:shadow-[0_20px_40px_rgba(99,102,241,0.05)] hover:border-accent/30;
+    @apply bg-surface backdrop-blur-xl border border-border rounded-r2;
+  }
+
+  .btn-primary {
+    @apply px-10 py-4 bg-linear-to-r from-accent to-accent2 text-white font-bold 
+           rounded-r tracking-tight transition-all duration-300 hover:scale-105 
+           hover:shadow-[0_10px_20px_rgba(99,102,241,0.2)] active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 border border-border bg-white/30 backdrop-blur-md text-text 
+           font-bold rounded-r transition-all duration-300 hover:bg-white/60 
+           hover:border-accent/40 text-sm;
+  }
+
+  .badge {
+    @apply px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em];
+  }
+
+  .badge-primary {
+    @apply bg-linear-to-r from-accent/20 to-neon3/20 text-accent border border-accent/20;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-accent/20 rounded-full hover:bg-accent/40;
+  }
+}
