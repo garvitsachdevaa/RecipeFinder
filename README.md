@@ -1,16 +1,63 @@
-# React + Vite
+# Recipe Finder
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React + Vite app to search meals, view cooking instructions, and save favorite recipes.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Search recipes by name using TheMealDB API
+- Press Enter or click Search to run search
+- View full instructions in a clean modal (without breaking card layout)
+- Add and remove favorites
+- Persist favorites in local storage
+- Responsive UI built with Tailwind CSS
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React 19
+- Vite 8
+- Tailwind CSS 4
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 1. Install dependencies
+
+```bash
+npm install
+```
+
+### 2. Run development server
+
+```bash
+npm run dev
+```
+
+Open the URL shown in terminal (usually http://localhost:5173).
+
+## Available Scripts
+
+- `npm run dev` - start local development server
+- `npm run build` - create production build
+- `npm run preview` - preview production build locally
+- `npm run lint` - run ESLint checks
+
+## Project Structure
+
+```text
+src/
+	App.jsx
+	main.jsx
+	index.css
+	pages/
+		Home.jsx
+```
+
+## API Reference
+
+This project uses TheMealDB search endpoint:
+
+`https://www.themealdb.com/api/json/v1/1/search.php?s=<recipe-name>`
+
+## Notes
+
+- Favorites are stored in browser local storage under the key `favourites`.
+- If no meals match a query, the app shows a "No results found" state.
